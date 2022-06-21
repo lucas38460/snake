@@ -23,6 +23,9 @@ const LEFT = "LEFT";
 const TOP = "TOP";
 const BOTTOM = "BOTTOM";
 let direction = RIGHT;
+let randomX = Math.floor(Math.random() * 1190);
+let randomY = Math.floor(Math.random() * 590);
+
 
 document.addEventListener("keypress", (e) => {
   if (e.code == "KeyW") {
@@ -39,25 +42,25 @@ document.addEventListener("keypress", (e) => {
 const timer = setInterval(() => {
   switch (direction) {
     case TOP:
-    if (snake[0].x >= 0) {
+    if (snake[0].y > 0) {
       snake[0].y -= 10;
       tile.style.top = snake[0].y + "px";
     }
       break;
     case RIGHT:
-    if (snake[0].x <= 1200) {
+    if (snake[0].x < 1190) {
       snake[0].x += 10;
       tile.style.left = snake[0].x + "px";
     }
       break;
     case LEFT:
-    if (snake[0].y >= 0) {
+    if (snake[0].x > 0) {
       snake[0].x -= 10;
       tile.style.left = snake[0].x + "px";
     }
       break;
     case BOTTOM:
-    if (snake[0].x <= 800) {
+    if (snake[0].y < 590) {
       snake[0].y += 10;
       tile.style.top = snake[0].y + "px";
     }
