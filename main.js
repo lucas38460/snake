@@ -1,46 +1,58 @@
-const snake = document.getElementById("snake");
-const posX = document.getElementsByClassName("x");
-const posY = document.getElementsByClassName("y");
-let x = 0;
-let y = 0;
+// const snake = document.getElementById("snake");
+// const posX = document.getElementsByClassName("x");
+// const posY = document.getElementsByClassName("y");
+// let x = 0;
+// let y = 0;
+const app = document.getElementById("app");
+const snake = [
+  {
+    x: 0,
+    y: 0,
+  },
+];
 
-window.addEventListener("keypress", (e) => {
+const tile = document.createElement("div");
+tile.classList.add("tile");
+
+tile.style.top = 0;
+tile.style.left = 0;
+app.appendChild(tile);
+
+const RIGHT = "RIGHT";
+const LEFT = "LEFT";
+const TOP = "TOP";
+const BOTTOM = "BOTTOM";
+let direction = RIGHT;
+
+document.addEventListener("keypress", (e) => {
   if (e.code == "KeyW") {
-    x += 1;
-    distanceXMax(e);
-    console.log(x, y);
-    console.log("key Z");
+    direction = TOP;
   } else if (e.code == "KeyS") {
-    x -= 1;
-    distanceXMax(e);
-    console.log(x, y);
-    console.log("key S");
+    direction = BOTTOM;
   } else if (e.code == "KeyA") {
-    y -= 1;
-    distanceYMax(y);
-    console.log(x, y);
-    console.log("key Q");
+    direction = LEFT;
   } else if (e.code == "KeyD") {
-    y += 1;
-    distanceYMax(y);
-    console.log(x, y);
-    console.log("key D");
+    direction = RIGHT;
   }
 });
 
-const distanceXMax = (e) => {
-  while (x < 20 && y < 20) {
-    setInterval(() => {
-        
-    }, 100);
+const timer = setInterval(() => {
+  switch (direction) {
+    case TOP:
+      snake[0].y -= 10;
+      tile.style.top = snake[0].y + "px";
+      break;
+    case RIGHT:
+      snake[0].x += 10;
+      tile.style.left = snake[0].x + "px";
+      break;
+    case LEFT:
+      snake[0].x -= 10;
+      tile.style.left = snake[0].x + "px";
+      break;
+    case BOTTOM:
+      snake[0].y += 10;
+      tile.style.top = snake[0].y + "px";
+      break;
   }
-};
-
-const distanceYMax = (e) => {
-    while (x < 20 && y < 20) {
-      setInterval(() => {
-          
-      }, 100);
-    }
-  };
-  
+}, 200);

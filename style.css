@@ -3,36 +3,28 @@
 }
 html {
   font-size: 62.5%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+
 }
 
 body {
-  width: 70vw;
+  width: 100vw;
   height: 100vh;
-  margin: 0 auto;
   padding: 0%;
 }
 
 #app {
-  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  width: 70%;
   height: 100%;
   background-color: black;
 }
 
-#snake {
+.tile {
+  position: absolute;
   width: 1vw;
   height: 1vh;
   background-color: greenyellow;
-}
-
-.y {
-  display: inline-block;
-  width: 32.3px;
-  height: 100%;
-}
-
-.x {
-  display: block;
-  width: 100%;
-  height: 37.68px;
-  background-color: grey;
 }
