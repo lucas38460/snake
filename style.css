@@ -1,5 +1,7 @@
 * {
   box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
 }
 html {
   font-size: 62.5%;
@@ -17,14 +19,14 @@ body {
 #app {
   position: relative;
   margin: 0 auto;
-  width: 70%;
-  height: 100%;
+  width: 1200px;
+  height: 800px;
   background-color: black;
 }
 
 .tile {
   position: absolute;
-  width: 1vw;
-  height: 1vh;
-  background-color: greenyellow;
+  width: 10px;
+  height: 10px;
+  background-color: chartreuse;
 }

@@ -39,20 +39,28 @@ document.addEventListener("keypress", (e) => {
 const timer = setInterval(() => {
   switch (direction) {
     case TOP:
+    if (snake[0].x >= 0) {
       snake[0].y -= 10;
       tile.style.top = snake[0].y + "px";
+    }
       break;
     case RIGHT:
+    if (snake[0].x <= 1200) {
       snake[0].x += 10;
       tile.style.left = snake[0].x + "px";
+    }
       break;
     case LEFT:
+    if (snake[0].y >= 0) {
       snake[0].x -= 10;
       tile.style.left = snake[0].x + "px";
+    }
       break;
     case BOTTOM:
+    if (snake[0].x <= 800) {
       snake[0].y += 10;
       tile.style.top = snake[0].y + "px";
+    }
       break;
-  }
-}, 200);
+}
+}, 20);
