@@ -1,40 +1,46 @@
-// const snake = document.getElementById("snake");
-// const posX = document.getElementsByClassName("x");
-// const posY = document.getElementsByClassName("y");
-// let x = 0;
-// let y = 0;
-
 const app = document.getElementById("app");
-const btnStart = document.createElement('btn');
-app.appendChild(btnStart) ;
+const commande = document.getElementById('commande');
+const btnStart = document.createElement("a");
+btnStart.href = "/";
+btnStart.innerHTML = `start / restart`;
+commande.appendChild(btnStart);
 
+const snake = [];
+const snakeDiv = document.createElement("div");
+snakeDiv.classList.add("tile");
+snakeDiv.style.top = 0;
+snakeDiv.style.left = 0;
+snake.push(snakeDiv);
+app.appendChild(snakeDiv);
 
-// const start = () => {
-  const snake = [];
-  const snakeDiv = document.createElement("div");
-  snakeDiv.classList.add("tile");
-  snakeDiv.style.top = 0;
-  snakeDiv.style.left = 0;
-  snake.push(snakeDiv);
-  app.appendChild(snakeDiv);
+let appleCoord = {
+  x: 100,
+  y: 100,
+};
 
-  let appleCoord = {
-    x: 100,
-    y: 100,
-  };
-
-  const apple = document.createElement("div");
-  apple.id = "redApple";
-  apple.style.top = appleCoord.x + "px";
-  apple.style.left = appleCoord.y + "px";
-  app.appendChild(apple);
-// };
+const apple = document.createElement("div");
+apple.id = "redApple";
+apple.style.top = appleCoord.x + "px";
+apple.style.left = appleCoord.y + "px";
+app.appendChild(apple);
 
 const RIGHT = "RIGHT";
 const LEFT = "LEFT";
 const TOP = "TOP";
 const BOTTOM = "BOTTOM";
 let direction = RIGHT;
+
+document.addEventListener("keypress", (e) => {
+  if (e.code == "KeyW") {
+    direction = TOP;
+  } else if (e.code == "KeyS") {
+    direction = BOTTOM;
+  } else if (e.code == "KeyA") {
+    direction = LEFT;
+  } else if (e.code == "KeyD") {
+    direction = RIGHT;
+  }
+});
 
 const buildBonus = () => {
   let find = true;
@@ -49,22 +55,24 @@ const buildBonus = () => {
   apple.style.left = appleCoord.x + "px";
 };
 
-document.addEventListener("keypress", (e) => {
-  if (e.code == "KeyW") {
-    direction = TOP;
-  } else if (e.code == "KeyS") {
-    direction = BOTTOM;
-  } else if (e.code == "KeyA") {
-    direction = LEFT;
-  } else if (e.code == "KeyD") {
-    direction = RIGHT;
-  }
-});
-
 const timer = setInterval(() => {
   const head = snake[snake.length - 1];
   const y = parseInt(head.style.top);
   const x = parseInt(head.style.left);
+
+  function isInSnake(x, y) {
+    let tmp = false;
+    for (let i = 0; i < snake.length; i++) {
+      if (
+        parseInt(snake[i].style.top) === y &&
+        parseInt(snake[i].style.left) === x
+      ) {
+        tmp = true;
+      }
+    }
+    return tmp;
+  }
+  isInSnake(x, y);
 
   switch (direction) {
     case TOP:
