@@ -30,3 +30,10 @@ body {
   height: 10px;
   background-color: chartreuse;
 }
+
+#redApple {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: red;
+}
